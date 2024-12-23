@@ -69,7 +69,8 @@ public class Main {
 
         for (Person member : school.getMembers()) {
             if (member instanceof Student student) {
-                System.out.println(student.getName() + "'s GPA: " + student.calculateGrades());
+                double grade = student.calculateGrade();
+                System.out.println(student.getName() + "'s GPA: " + Student.convertToGPA(grade));
             }
         }
     }
