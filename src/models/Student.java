@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Person {
-
     private static int idCounter = 1;
     private int studentID;
     private List<Integer> grades;
