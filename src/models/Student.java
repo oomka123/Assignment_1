@@ -6,7 +6,7 @@ import java.util.List;
 public class Student extends Person {
     private static int idCounter = 1;
     private int studentID;
-    private List<Integer> grades;
+    private  List<Integer> grades;
 
     public Student(String name, String surname, int age, boolean gender) {
         super(name, surname, age, gender);
@@ -20,16 +20,17 @@ public class Student extends Person {
         }
     }
 
-    public double calculateGrade() {
+    public double calculateGPA() {
         if (grades.isEmpty()) return 0.0;
-        int sum = 0;
+        double sum = 0;
         for (int grade : grades) {
             sum += grade;
         }
-        return sum / (double) grades.size();
+
+        return convertToGPA(sum / grades.size());
     }
 
-    public static double convertToGPA(double averageGrade) {
+    private static double convertToGPA(double averageGrade) {
         if (averageGrade >= 93) {
             return 4.0;
         } else if (averageGrade >= 90) {
@@ -51,7 +52,7 @@ public class Student extends Person {
         } else if (averageGrade >= 60) {
             return 1.0;
         } else {
-            return 0.0; // Для баллов ниже 60
+            return 0.0;
         }
     }
 
