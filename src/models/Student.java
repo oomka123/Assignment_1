@@ -1,28 +1,12 @@
 package models;
 
 import java.util.ArrayList;
-import static java.util.Map.entry;
 import java.util.List;
-import java.util.Map;
 
 public class Student extends Person {
     private static int idCounter = 1;
     private int studentID;
     private List<Integer> grades;
-
-    private static final Map<Integer, Double> gradesToGPA = Map.ofEntries(
-            entry(100, 4.0),
-            entry(95, 4.0),
-            entry(90, 3.67),
-            entry(85, 3.33),
-            entry(80, 3.0),
-            entry(75, 2.67),
-            entry(70, 2.33),
-            entry(65, 2.0),
-            entry(60, 1.67),
-            entry(55, 1.33),
-            entry(50, 1.0)
-    );
 
     public Student(String name, String surname, int age, boolean gender) {
         super(name, surname, age, gender);
@@ -46,11 +30,31 @@ public class Student extends Person {
     }
 
     public static double convertToGPA(double averageGrade) {
-
-        int roundedGrade = (int) (Math.round(averageGrade / 5.0) * 5);
-
-        return gradesToGPA.getOrDefault(roundedGrade, 0.0);
+        if (averageGrade >= 93) {
+            return 4.0;
+        } else if (averageGrade >= 90) {
+            return 3.67;
+        } else if (averageGrade >= 87) {
+            return 3.33;
+        } else if (averageGrade >= 83) {
+            return 3.0;
+        } else if (averageGrade >= 80) {
+            return 2.67;
+        } else if (averageGrade >= 77) {
+            return 2.33;
+        } else if (averageGrade >= 73) {
+            return 2.0;
+        } else if (averageGrade >= 70) {
+            return 1.67;
+        } else if (averageGrade >= 67) {
+            return 1.33;
+        } else if (averageGrade >= 60) {
+            return 1.0;
+        } else {
+            return 0.0; // Для баллов ниже 60
+        }
     }
+
 
     @Override
     public String toString() {
