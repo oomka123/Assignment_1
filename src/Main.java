@@ -1,4 +1,7 @@
-package modules;
+import models.Person;
+import models.School;
+import models.Student;
+import models.Teacher;
 
 import java.io.*;
 import java.util.*;
@@ -7,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         School school = new School();
 
-        File studentFile = new File("src/modules/students.txt");
+        File studentFile = new File("src/students.txt");
         Scanner studentScanner = new Scanner(studentFile);
 
         while (studentScanner.hasNext()) {
@@ -26,7 +29,7 @@ public class Main {
         }
         studentScanner.close();
 
-        File teacherFile = new File("src/modules/teachers.txt");
+        File teacherFile = new File("src/teachers.txt");
         Scanner teacherScanner = new Scanner(teacherFile);
 
         while (teacherScanner.hasNext()) {
