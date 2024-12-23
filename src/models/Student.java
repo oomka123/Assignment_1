@@ -1,12 +1,28 @@
 package models;
 
 import java.util.ArrayList;
+import static java.util.Map.entry;
 import java.util.List;
+import java.util.Map;
 
 public class Student extends Person {
     private static int idCounter = 1;
     private int studentID;
     private List<Integer> grades;
+
+    private static final Map<Integer, Double> gradesToGPA = Map.ofEntries(
+            entry(100, 4.0),
+            entry(95, 4.0),
+            entry(90, 3.67),
+            entry(85, 3.33),
+            entry(80, 3.0),
+            entry(75, 2.67),
+            entry(70, 2.33),
+            entry(65, 2.0),
+            entry(60, 1.67),
+            entry(55, 1.33),
+            entry(50, 1.0)
+    );
 
     public Student(String name, String surname, int age, boolean gender) {
         super(name, surname, age, gender);
@@ -29,18 +45,11 @@ public class Student extends Person {
         return sum / (double) grades.size();
     }
 
-    public static double convertToGPA(double grade) {
-        if (grade >= 90 && grade <= 100) {
-            return 4.0;
-        } else if (grade >= 80 && grade < 90) {
-            return 3.0 + (grade - 80) * 0.1;
-        } else if (grade >= 70 && grade < 80) {
-            return 2.0 + (grade - 70) * 0.1;
-        } else if (grade >= 60 && grade < 70) {
-            return 1.0 + (grade - 60) * 0.1;
-        } else {
-            return 0.0;
-        }
+    public static double convertToGPA(double averageGrade) {
+
+        int roundedGrade = (int) (Math.round(averageGrade / 5.0) * 5);
+
+        return gradesToGPA.getOrDefault(roundedGrade, 0.0);
     }
 
     @Override
