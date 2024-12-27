@@ -1,7 +1,6 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,15 +17,6 @@ public class School {
 
     public List<Person> getMembers() {
         return members;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Person member : members) {
-            sb.append(member.toString()).append("\n");
-        }
-        return sb.toString();
     }
 
     public void sortStudents() {
@@ -52,5 +42,12 @@ public class School {
         });
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Person member : members) {
+            sb.append(member.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }
