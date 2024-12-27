@@ -67,6 +67,9 @@ public class Main {
 
         System.out.println();
 
+        school.sortStudents();
+
+        System.out.println("Sorted GPA of students:");
         for (Person member : school.getMembers()) {
             if (member instanceof Student student) {
                 System.out.println(student.getName() + "'s GPA: " + student.calculateGPA());
